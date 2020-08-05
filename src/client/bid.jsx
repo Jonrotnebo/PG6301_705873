@@ -18,10 +18,11 @@ export class Bid extends React.Component{
         }
     }
 
-    componentDidMount(){
-        if(this.state.error === null) {
-            this.fetchItem();
+    componentDidMount() {
+        if(this.props.user) {
+            this.props.fetchAndUpdateUserInfo();
         }
+        this.fetchItem();
     }
 
     async fetchItem(){
@@ -83,6 +84,9 @@ export class Bid extends React.Component{
 
     render(){
 
+        const user = this.props.user;
+        const loggedIn = user !== null && user !== undefined;
+
         if(this.state.error !== null){
             return(
                 <div>
@@ -96,6 +100,9 @@ export class Bid extends React.Component{
         }
 
         return(
+
+            <div>
+            {loggedIn ? (
             <div>
                 <h3>Bid on Item</h3>
                 <ActionBid
@@ -108,6 +115,13 @@ export class Bid extends React.Component{
                     okCallback={this.onOk}
                 />
             </div>
+
+        ) : (
+            <div>
+                <p> Log Inn to bid on items!</p>
+            </div>
+        )}
+        </div>
         );
     }
 }

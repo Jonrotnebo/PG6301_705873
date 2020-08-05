@@ -142,7 +142,6 @@ app.use(passport.session());
 
 //--- Routes -----------
 app.use('/api', authApi);
-//app.use('/api', lootBox)
 
 
 //handling 404

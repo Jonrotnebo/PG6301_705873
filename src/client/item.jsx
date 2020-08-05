@@ -78,6 +78,7 @@ class Item extends React.Component {
                         placeholder={"Type in the itemName"}
                         value={this.state.startingPrice}
                         onChange={this.onPriceChange}
+                        type="number"
                         className="bookInput"
                     />
 
@@ -85,6 +86,7 @@ class Item extends React.Component {
                     <input
                         placeholder={"Type the price of this item"}
                         value={this.state.currentBid}
+                        type="number"
                         onChange={this.onCurrentPriceChange}
                         className="bookInput"
                     />

@@ -5,8 +5,6 @@ const {MemoryRouter} = require('react-router-dom');
 const {Home} = require('../../src/client/home');
 
 
-
-
 const needToLogInMsg = "Log in/sign up to see all the items";
 
 

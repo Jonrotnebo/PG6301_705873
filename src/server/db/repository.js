@@ -13,7 +13,7 @@ function initWithSomeItems(){
 
     createNewItem("Pen", "a pen pensile in fine conditions", 300, 0);
     createNewItem("The Lord of the Rings", "the book The Lord of the Rings", 150, 0);
-    createNewItem("Cola", "a can of coca cola", 1, 0);
+    createNewItem("Cola", "a can of coca cola", 1, 1);
     createNewItem("laptop", "a well used laptop, macbook 8", 3600, 0);
 }
 

@@ -96,8 +96,15 @@ export class App extends React.Component{
                                                       fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}
 
                                />}/>
-                        <Route exact path="/create" component={Create}/>
-                        <Route exact path="/bid" component={Bid}/>
+                        <Route exact path="/create"
+                               render={props => <Create {...props}
+                                   user={this.state.user}
+                                   updateLoggedInUser={this.updateLoggedInUser}
+                                   fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
+                        <Route exact path="/bid" render={props => <Bid {...props}
+                                                                          user={this.state.user}
+                                                                          updateLoggedInUser={this.updateLoggedInUser}
+                                                                          fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
 
 
                         <Route component={this.notFound}/>
