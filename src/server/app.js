@@ -9,6 +9,7 @@ const app = express();
 const ews = require('express-ws')(app);
 const WS = require('ws');
 
+const repository = require("./db/repository");
 
 const authApi = require('./routes/auth-api');
 
@@ -23,18 +24,12 @@ if (false) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.use(bodyParser.json());
-
 
 app.ws('/', function (socket, req) {
     console.log('Established a new WS connection');
 
 });
-
-
-
-
 
 app.use(session({
     secret: 'a secret used to encrypt the session cookies',
@@ -42,12 +37,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-
 app.use(express.static('public'));
-
-
-
-
 
 passport.use(new LocalStrategy(
     {
@@ -83,9 +73,72 @@ passport.deserializeUser(function (id, done) {
     }
 });
 
+
+
+// for the action and items visibility
+
+app.get('/api/items', (req, res) => {
+
+        res.json(repository.getAllItems());
+});
+
+app.get('/api/items/:id', (req, res) => {
+
+    const item = repository.getItem(req.params["id"]);
+
+    if (!item) {
+        res.status(404);
+        res.send()
+    } else {
+        res.json(item);
+    }
+});
+
+app.delete('/api/items/:id', (req, res) => {
+
+    const deleted = repository.deleteItem(req.params.id);
+    if (deleted) {
+        res.status(204);
+    } else {
+        //this can happen if book already deleted or does not exist
+        res.status(404);
+    }
+    res.send();
+});
+
+app.post('/api/items', (req, res) => {
+
+    const dto = req.body;
+
+    const id = repository.createNewItem(dto.itemName, dto.description, dto.startingPrice, dto.currentBid);
+
+    res.status(201); //created
+    res.header("location", "/api/items/" + id);
+    res.send();
+});
+
+app.put('/api/items/:id', (req, res) => {
+
+    if(req.params.id !== req.body.id){
+        res.status(409);
+        res.send();
+        return;
+    }
+
+    const updated = repository.updateItem(req.body);
+
+    if (updated) {
+        res.status(204);
+    } else {
+        //this can happen if entity did not exist
+        res.status(404);
+    }
+    res.send();
+});
+
+
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 //--- Routes -----------
 app.use('/api', authApi);

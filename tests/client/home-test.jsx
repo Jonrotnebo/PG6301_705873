@@ -7,7 +7,7 @@ const {Home} = require('../../src/client/home');
 
 
 
-const needToLogInMsg = "Log in/sign up to get premium access";
+const needToLogInMsg = "Log in/sign up to see all the items";
 
 
 test("Test not logged in", async () => {

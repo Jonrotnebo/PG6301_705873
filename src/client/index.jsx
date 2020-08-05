@@ -6,6 +6,9 @@ import HeaderBar from "./headerbar";
 import {Home} from "./home";
 import SignUp from "./signup";
 import Login from "./login";
+import {Create} from "./create";
+import {Bid} from "./bid";
+import {AuctionBid} from "./auctionBid";
 
 
 export class App extends React.Component{
@@ -93,6 +96,9 @@ export class App extends React.Component{
                                                       fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}
 
                                />}/>
+                        <Route exact path="/create" component={Create}/>
+                        <Route exact path="/bid" component={Bid}/>
+
 
                         <Route component={this.notFound}/>
                     </Switch>
