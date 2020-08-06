@@ -1,3 +1,6 @@
+// Disclaimer: I Did not write this file. Minor changes/Alterations from repo, se link below
+// Link: https://github.com/arcuri82/web_development_and_api_design/blob/master/exercise-solutions/quiz-game/part-10/src/client/index.jsx
+
 import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
@@ -8,8 +11,6 @@ import SignUp from "./signup";
 import Login from "./login";
 import {Create} from "./create";
 import {Bid} from "./bid";
-import {AuctionBid} from "./auctionBid";
-import {MarkSold} from "./markSold"
 
 
 export class App extends React.Component{
@@ -108,10 +109,6 @@ export class App extends React.Component{
                                                                           user={this.state.user}
                                                                           updateLoggedInUser={this.updateLoggedInUser}
                                                                           fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
-                        <Route exact path="/markSold" render={props => <MarkSold {...props}
-                                                                       user={this.state.user}
-                                                                       updateLoggedInUser={this.updateLoggedInUser}
-                                                                       fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
 
                         <Route component={this.notFound}/>
                     </Switch>

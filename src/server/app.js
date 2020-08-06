@@ -1,3 +1,7 @@
+//Disclaimer: i did not write this file, its altered primaly from linked part, some of it is retrieved from other parts and altered.
+//Link: https://github.com/arcuri82/web_development_and_api_design/blob/master/exercise-solutions/quiz-game/part-10/src/server/app.js
+//Link: https://github.com/arcuri82/web_development_and_api_design/blob/master/les07/server_client_together/src/server/app.js
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');

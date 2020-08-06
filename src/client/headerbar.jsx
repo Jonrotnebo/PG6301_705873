@@ -1,3 +1,6 @@
+// Disclaimer: I Did not write this file. Minor changes/Alterations from repo, se link below
+// Link: https://github.com/arcuri82/web_development_and_api_design/tree/master/exercise-solutions/quiz-game/part-10
+
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 

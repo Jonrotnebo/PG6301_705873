@@ -1,6 +1,7 @@
+// Disclaimer: I Did not write this file. Minor changes/Alterations from repo, se link below
+// Link: https://github.com/arcuri82/web_development_and_api_design/blob/master/les07/server_client_together/src/client/book.jsx
 import React from "react";
 import {Link, withRouter} from 'react-router-dom'
-import sold from "./sold";
 
 
 class Item extends React.Component {
@@ -13,7 +14,7 @@ class Item extends React.Component {
             description: this.props.description ? this.props.description : "",
             startingPrice: this.props.startingPrice ? this.props.startingPrice : "",
             currentBid: this.props.currentBid ? this.props.currentBid : "",
-            sold: this.props.sold ? this.props.sold: 1,
+            sold: this.props.sold ? this.props.sold: true,
             owner: this.props.user.maker ? this.props.user.maker: ""
         };
 

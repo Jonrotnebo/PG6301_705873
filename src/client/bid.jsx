@@ -1,3 +1,6 @@
+// Disclaimer: I Did not write this file. Minor changes/Alterations from repo, se link below
+// Link: https://github.com/arcuri82/web_development_and_api_design/blob/master/les07/server_client_together/src/client/edit.jsx
+
 import React from "react";
 import ActionBid from "./auctionBid";
 
@@ -58,11 +61,11 @@ export class Bid extends React.Component{
     }
 
 
-    onOk = async (itemName, description, startingPrice, currentBid, id) => {
+    onOk = async (itemName, description, startingPrice, currentBid, sold, owner, id) => {
 
         const url = "/api/items/" + id;
 
-        const payload = {id, itemName, description, startingPrice, currentBid};
+        const payload = {id, itemName, description, startingPrice,sold, owner, currentBid};
 
         let response;
 
@@ -111,8 +114,8 @@ export class Bid extends React.Component{
                             description={this.state.item.description}
                             startingPrice={this.state.item.startingPrice}
                             currentBid={this.state.item.currentBid}
-                            owner={this.state.item.owner}
                             sold={this.state.item.sold}
+                            owner={this.state.item.owner}
                             itemId={this.itemId}
                             ok={"Update"}
                             okCallback={this.onOk}

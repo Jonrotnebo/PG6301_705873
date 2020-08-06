@@ -1,3 +1,6 @@
+// Disclaimer: I Did not write this file. Minor changes/Alterations from repo, se link below
+// Link:https://github.com/arcuri82/web_development_and_api_design/blob/master/les07/server_client_together/src/client/create.jsx
+
 import React from "react";
 import Item from "./item";
 
