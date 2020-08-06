@@ -65,7 +65,7 @@ export class Bid extends React.Component{
 
         const url = "/api/items/" + id;
 
-        const payload = {id, itemName, description, startingPrice,sold, owner, currentBid};
+        const payload = {id, itemName, description, startingPrice, sold, owner, currentBid};
 
         let response;
 
