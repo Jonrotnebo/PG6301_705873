@@ -3,7 +3,9 @@
 
 Test Coverage is: 55%
 #
-
+The exam started without a candidate number given so the project is given the student id.
+the zip file is corrected and uses candidate number.
+#
 How to run the program:
 #
 Yarn have been used.
