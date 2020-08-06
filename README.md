@@ -27,6 +27,15 @@ R1: is completed.
 
 R2: is completed. Note! the delete method is not in use in the front end.
 
+Each endpoint:
+- Get /api/items
+- Get /api/items/:id
+- Delete /api/items/:id
+- Post /api/items
+- Put /api/items/:id
+
+Also have Endpoints fore the login/signup, wich is not spesified to list.
+
 R3: is completed.
 
 R4: and R5 is NOT attempted.
