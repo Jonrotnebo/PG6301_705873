@@ -1,5 +1,6 @@
 import React from "react";
 import {Link, withRouter} from 'react-router-dom'
+import sold from "./sold";
 
 
 class Item extends React.Component {
@@ -11,7 +12,9 @@ class Item extends React.Component {
             itemName: this.props.itemName ? this.props.itemName : "",
             description: this.props.description ? this.props.description : "",
             startingPrice: this.props.startingPrice ? this.props.startingPrice : "",
-            currentBid: this.props.currentBid ? this.props.currentBid : ""
+            currentBid: this.props.currentBid ? this.props.currentBid : "",
+            sold: this.props.sold ? this.props.sold: 1,
+            owner: this.props.user.maker ? this.props.user.maker: ""
         };
 
         this.ok = this.props.ok ? this.props.ok : "Ok";
@@ -26,6 +29,8 @@ class Item extends React.Component {
             this.state.description,
             this.state.startingPrice,
             this.state.currentBid,
+            this.state.sold,
+            this.state.owner,
             this.props.itemId);
 
 

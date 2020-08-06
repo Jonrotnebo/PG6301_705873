@@ -1,7 +1,7 @@
 import React from "react";
-import ActionBid from "./auctionBid";
+import Sold from "./sold";
 
-export class Bid extends React.Component{
+export class MarkSold extends React.Component{
 
     constructor(props) {
         super(props);
@@ -58,11 +58,11 @@ export class Bid extends React.Component{
     }
 
 
-    onOk = async (itemName, description, startingPrice, currentBid, id) => {
+    onOk = async (itemName, description, startingPrice, currentBid, sold, owner, id) => {
 
         const url = "/api/items/" + id;
 
-        const payload = {id, itemName, description, startingPrice, currentBid};
+        const payload = {id, itemName, description, startingPrice, currentBid, sold, owner};
 
         let response;
 
@@ -105,8 +105,8 @@ export class Bid extends React.Component{
             <div>
                 {loggedIn ? (
                     <div>
-                        <h3>Bid on Item</h3>
-                        <ActionBid
+                        <h3>Make item Sold</h3>
+                        <Sold
                             itemName={this.state.item.itemName}
                             description={this.state.item.description}
                             startingPrice={this.state.item.startingPrice}
@@ -118,12 +118,13 @@ export class Bid extends React.Component{
                             okCallback={this.onOk}
                         />
                     </div>
-                        )  : (
-                            <div>
-                                <p> Log Inn to bid on items!</p>
-                            </div>
-                            )}
-                        </div>
-            );
+
+                ) : (
+                    <div>
+                        <p> Log Inn to bid on items!</p>
+                    </div>
+                )}
+            </div>
+        );
     }
 }

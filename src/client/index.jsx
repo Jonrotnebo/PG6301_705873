@@ -9,6 +9,7 @@ import Login from "./login";
 import {Create} from "./create";
 import {Bid} from "./bid";
 import {AuctionBid} from "./auctionBid";
+import {MarkSold} from "./markSold"
 
 
 export class App extends React.Component{
@@ -99,13 +100,18 @@ export class App extends React.Component{
                         <Route exact path="/create"
                                render={props => <Create {...props}
                                    user={this.state.user}
+                                                        maker={this.state.user.maker}
                                    updateLoggedInUser={this.updateLoggedInUser}
                                    fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
+
                         <Route exact path="/bid" render={props => <Bid {...props}
                                                                           user={this.state.user}
                                                                           updateLoggedInUser={this.updateLoggedInUser}
                                                                           fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
-
+                        <Route exact path="/markSold" render={props => <MarkSold {...props}
+                                                                       user={this.state.user}
+                                                                       updateLoggedInUser={this.updateLoggedInUser}
+                                                                       fetchAndUpdateUserInfo={this.fetchAndUpdateUserInfo}/>}/>
 
                         <Route component={this.notFound}/>
                     </Switch>

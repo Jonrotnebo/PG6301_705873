@@ -110,7 +110,7 @@ app.post('/api/items', (req, res) => {
 
     const dto = req.body;
 
-    const id = repository.createNewItem(dto.itemName, dto.description, dto.startingPrice, dto.currentBid);
+    const id = repository.createNewItem(dto.itemName, dto.description, dto.startingPrice, dto.currentBid, dto.sold, dto.owner);
 
     res.status(201); //created
     res.header("location", "/api/items/" + id);

@@ -1,7 +1,6 @@
 
 const users = new Map();
 
-
 function getUser(id){
 
     return users.get(id);
@@ -27,7 +26,8 @@ function createUser(id, password){
 
     const user = {
         id: id,
-        password: password
+        password: password,
+        maker: id
     };
 
     users.set(id, user);

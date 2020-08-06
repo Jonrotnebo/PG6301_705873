@@ -1,5 +1,4 @@
 
-
 // map from ids to items
 const items = new Map();
 
@@ -11,23 +10,27 @@ function initWithSomeItems(){
     items.clear()
     counter = 0;
 
-    createNewItem("Pen", "a pen pensile in fine conditions", 300, 0);
-    createNewItem("The Lord of the Rings", "the book The Lord of the Rings", 150, 0);
-    createNewItem("Cola", "a can of coca cola", 1, 1);
-    createNewItem("laptop", "a well used laptop, macbook 8", 3600, 0);
+    createNewItem("Pen", "a pen pensile in fine conditions", 300, 0,1, "foo");
+    createNewItem("The Lord of the Rings", "the book The Lord of the Rings", 150, 0, 1, "foo");
+    createNewItem("Cola", "a can of coca cola", 1, 1, 1, "foo");
+    createNewItem("laptop", "a well used laptop, macbook 8", 3600, 0, 1, "foo");
 }
 
-function createNewItem(itemName, description, price, bidPrice){
+function createNewItem(itemName, description, price, bidPrice, sold, owner){
 
     const id = "" + 1 + counter;
     counter++;
+
+    sold = true;
 
     const item = {
         id: id,
         itemName: itemName,
         description: description,
         startingPrice: price,
-        currentBid: bidPrice
+        currentBid: bidPrice,
+        sold: sold,
+        owner: owner
     };
 
     items.set(id, item);

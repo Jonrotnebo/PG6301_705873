@@ -51,10 +51,42 @@ export class Home extends React.Component {
         }
     }
 
+    markAsSold = async (id, itemName, description, startPrice, currentBid, sold, owner) => {
+        const url = "/api/items/" + id;
+
+        if (sold) {
+            sold = false
+        } else {
+            sold = true
+        }
+
+        const payload = {id, itemName, description, startPrice, currentBid, sold, owner}
+
+        let response;
+
+        try {
+            response = await fetch(url, {
+                method: "put",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+        } catch (err) {
+            return false;
+        }
+
+        await this.fetchItems();
+
+        return response.status === 204;
+    }
+
 
     render() {
 
         const user = this.props.user;
+        const loggedIn = user !== null && user !== undefined;
+
 
         let table;
 
@@ -82,13 +114,42 @@ export class Home extends React.Component {
                             <td>{b.startingPrice}</td>
                             <td>{b.currentBid}</td>
                             <td>
-                                <Link to={"/bid?itemId=" + b.id}>
-                                    <button className="btn">
-                                        <i className="fas fa-edit"></i>
-                                        <p>Bid</p>
-                                    </button>
-                                </Link>
-                                </td>
+                                {loggedIn ? (
+                                    <div>
+                                        {this.props.user.maker === b.owner && b.sold !== false && (
+                                            <div>
+                                                <button className="btn" onClick={_ => this.markAsSold(b.id, b.itemName, b.description, b.startPrice, b.currentBid, b.sold, b.owner)}>
+                                                    mark as sold
+                                                </button>
+                                            </div>
+                                        )}
+
+                                        {this.props.user.maker !== b.owner && b.sold !== false && (
+                                            <Link to={"/bid?itemId=" + b.id}>
+                                                <button className="btn">
+                                                    <i className="fas fa-edit"></i>
+                                                    <p>Bid</p>
+                                                </button>
+                                            </Link>
+                                        )}
+
+                                        {b.sold !== true && (
+                                            <button className="btn">
+                                                <p>Item is Sold</p>
+                                            </button>
+                                        )
+                                        }
+                                    </div>
+
+
+
+                                ) : (
+                                    <div>
+                                        <p>Error</p>
+                                    </div>
+                                    )}
+                            </td>
+
                         </tr>
                     )}
                     </tbody>
@@ -105,7 +166,7 @@ export class Home extends React.Component {
 
                 </div>
 
-                {user ? (
+                {loggedIn ? (
                     <div>
                         <p>Click the button to see all items</p>
                         <p>Logged in!</p>

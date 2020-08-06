@@ -7,12 +7,12 @@ export class Create extends React.Component{
         super(props);
     }
 
-    onOk = async (itemName, description, startingPrice, currentBid, itemId) => {
+    onOk = async (itemName, description, startingPrice, currentBid, sold, owner, itemId) => {
 
         const url = "/api/items";
 
-        //note: here bookId is ignored
-        const payload = {itemName, description, startingPrice, currentBid};
+        //note: here itemId is ignored
+        const payload = {itemName, description, startingPrice, currentBid, sold, owner};
 
         let response;
 
@@ -38,10 +38,13 @@ export class Create extends React.Component{
             <div>
                 <h3>Create a New Item</h3>
                 <Item
+                    user={this.props.user}
                     itemName={""}
                     description={""}
                     startinPrice={""}
                     currentBid={""}
+                    sold={""}
+                    owner={this.props.user.maker}
                     ok={"Create"}
                     okCallback={this.onOk}
                 />
